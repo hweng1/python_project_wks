@@ -1,3 +1,4 @@
+Team Members: Corinna Weng, Wendi Kan, Michael Sun
 1. The Big Idea: What is the main idea of your project? What topics will you explore and what will you generate? What is your minimum viable product? What is a stretch goal?
 
 The main idea of our project is to help Texas No-limit Hold’em poker players track their performances across every game using processed data and graphs, so that they can have a better understanding of whether their certain playstyles could help them earn profit in the long run. We will explore how to source and collect data and create an analytic output based on the data input of the users. 
@@ -21,10 +22,10 @@ Then we will design a series of functions in python as the functionalities of ou
 4. Project schedule: You have 8 weeks (roughly) to finish the project. Sketch out a rough schedule for completing the project. Depending on your project, you may be able to do this in great specificity or you may only be able to give a broad outline. Additionally, longer projects come with increased uncertainty, and this schedule will likely need to be refined along the way.
 
 We plan to meet twice each week as a team to work on this project. In our first meeting, we will discuss our progress, exchange thoughts, ideas and challenges; this meeting will be kept under 30 minutes and will most likely take place before or after our class session. In our second meeting, we will work on developing codes; this meeting will be longer (2-3 hours) and will take place over the weekend. 
-Week1: Designing the web for user interface and selecting data needed
-Week 2: Designing the database 
-Week 3-6: Coding out the functions in python and linking to the website
-Week 7-8: Testing and debugging the web application
+* Week1: Designing the web for user interface and selecting data needed
+* Week 2: Designing the database 
+* Week 3-6: Coding out the functions in python and linking to the website
+* Week 7-8: Testing and debugging the web application
 
 5. Collaboration plan: How do you plan to collaborate with your teammates on this project? Will you split tasks up, complete them independently, and then integrate? Will you pair program the entire thing? Make sure to articulate your plan for successfully working together as a team. This might also include information about any software development methodologies you plan to use (e.g. agile development). Make sure to make clear why you are choosing this particular organizational structure.
  
@@ -36,9 +37,9 @@ We think that storing data in an online database and calling the data from the d
 
 7. Additional Course Content: What are some topics that we might cover in class that you think would be especially helpful for your project?
 
-Learning about website related tools like Flask and Django would help us better understand how to use this as a tool to help us analyze the data stored in the database.
-Learning about how to store data to a cloud database,and call the data for analysis using Python or SQL language can also be helpful for our project. 
-Learning about Python related data processing languages such as list() can also be helpful for us to analyze the data we have.
-Learning about how to collaboratively use python and other softwares such as Tableau, SQL, and Excel can help us have a better understanding of what Python is capable of doing. 
+* Learning about website related tools like Flask and Django would help us better understand how to use this as a tool to help us analyze * the data stored in the database.
+* Learning about how to store data to a cloud database,and call the data for analysis using Python or SQL language can also be helpful for our project. 
+* Learning about Python related data processing languages such as 'list()' can also be helpful for us to analyze the data we have.
+* Learning about how to collaboratively use python and other softwares such as Tableau, SQL, and Excel can help us have a better understanding of what Python is capable of doing. 
 
 
