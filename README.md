@@ -8,3 +8,10 @@ Question to ask:
 3. how to raise error message on the refreshed login page
 4. is mysql able to automatically generate user_id and session_id, which are the primary keys
 5. how to display table from data pulled from the mysql database in html
+
+package installed:
+tabulate
+flask-mysql
+mysql-connector
+
+<a href="{{ url_for('data_input') }}">Click here to return to the index page</a>

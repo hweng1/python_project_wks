@@ -49,5 +49,9 @@ def index():
 def table():
     return render_template('result_output.html')
 
+@app.route('/delete', method=['GET','POST'])
+def delete():
+    pass
+
 if __name__ =='__main__':
     app.run(debug=True)
