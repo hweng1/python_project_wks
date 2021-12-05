@@ -7,6 +7,7 @@ We made an excel table to showcase what is the data that we are storing and gene
 
 
 2. Learning Goals: Since this is a team project, you may want to articulate both shared and individual learning goals.
+
 Our goal is to:
 Learn how to process raw data with python. 
 Explore how to use python to generate useful data output for users. 
