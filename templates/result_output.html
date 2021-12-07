@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Performance Results</title>
     <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js">
+    </script>
     <script>
   //     a = document.getElementById('tb').innerHTML
   // $(document).ready(function(){
@@ -12,23 +15,70 @@
   // });
   </script>
     <style>
-      table {margin-left: auto;margin-right: auto;}
+      table {margin-left: auto;margin-right: auto;border: 3px solid black;}
+      th {width: 100px;text-align: center !important;border-bottom: 3px solid black;}
+      tr {width: 100px;text-align: center !important;}
+      tr:nth-child(even) {background-color: #f2f2f2;}
+      td {width: 100px;text-align: center !important;}
+      .sum {width: 350px;}
     </style>
   </head>
-  
-
   <body>
     
     <h1 style="text-align: center;">Results</h1>
-    <p style="text-align: center;">win/loss
-      <em><b>{{ p_l }}</em></b><br>total time
-      <em><b>{{ t }}</em></b><br>profit/loss per hour
-      <em><b>{{ pl_h }}</em></b><br>big blind per hour
-      <em><b>{{ BB_h }}</em></b><br></p><br><br>
-    <div id='tb' style="width:fit-content; margin-left: auto;margin-right: auto;">
-      {{ u_t|safe }}
-      {{ u_t }}
+    <table class='sum'>
+      <th colspan="2">Summary</th>
+      <tr><td>win/loss</td>
+        <td><em><b>{{ p_l }}</em></b></td></tr>
+      <tr><td>total time</td>
+        <td><em><b>{{ t }}</em></b></td></tr>
+      <tr><td>profit/loss per hour</td>
+        <td><em><b>{{ pl_h }}</em></b></td></tr>
+      <tr><td>big blind per hour</td>
+        <td><em><b>{{ BB_h }}</em></b></td></tr>
+    </table><br>
+    <div style="margin-left: auto;margin-right: auto;width:fit-content;">
+    <canvas id = "Profit/Loss_Chart" width = '600' height = '400'></canvas>
     </div>
+    <script>
+    const DATA_COUNT = 2;
+    const NUMBER_CFG = {count: DATA_COUNT, min: -1000, max: 1000};
+    // const labels = 1;
+    const yValues = [10,-2,13,14,15]
+    const data = {
+      labels: [10,11,13,14,15],
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: yValues,
+          borderColor: 'red',
+          backgroundColor: 'blue',
+        },
+      ]
+    };
+    var ctx = document.getElementById('Profit/Loss_Chart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: 'Chart.js Bar Chart'
+          },
+          scales: {
+            yAxes: [{ticks: {min: -6, max:16}}],
+    }
+        }
+      },
+  })
+</script>
+
+      {{ u_t|safe }}<br>
     <a href="{{ url_for('index') }}">Click here to return to record a new session</a>
   </body>
 </html>
