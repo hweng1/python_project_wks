@@ -59,23 +59,23 @@ def index():
         return 'data has been entered'
     return render_template('data_input.html')
 
-@app.route('/result')
-def result():
-    return render_template('result_output.html')
+# @app.route('/result')
+# def result():
+#     return render_template('result_output.html')
 
-@app.route('/delete', method=['GET','POST'])
-def delete():
-        if request.method == 'POST':
-            try:
-                dl_id = (request.form['dl_id'])
-                query1 = 'DELETE * From Session WHERE session_id = {un}'.format(un = dl_id)
-                my_cursor.execute(query1)
-                conn.commit()
-                return render_template('success.html', session_id = dl_id)
-            except:
-                return render_template('delete.html')
-        else:
-            return render_template('delete.html')
+# @app.route('/delete', method=['GET','POST'])
+# def delete():
+#         if request.method == 'POST':
+#             try:
+#                 dl_id = (request.form['dl_id'])
+#                 query1 = 'DELETE * From Session WHERE session_id = {un}'.format(un = dl_id)
+#                 my_cursor.execute(query1)
+#                 conn.commit()
+#                 return render_template('success.html', session_id = dl_id)
+#             except:
+#                 return render_template('delete.html')
+#         else:
+#             return render_template('delete.html')
 
 if __name__ =='__main__':
     app.run(debug=True)
