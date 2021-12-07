@@ -1,9 +1,7 @@
-from logging import log
 from flask import Flask, render_template, request
 from logincheck import loginmatch
 from calculations import find_user_id, profit_loss, time, BB_per_hr, pl_per_hr, user_table, new_session_id
 import sqlite3
-import sqlalchemy
 # from logincheck import loginid
 
 app = Flask(__name__)
