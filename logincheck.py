@@ -1,14 +1,7 @@
+import sqlite3
 def loginmatch(login_id, password):
-    import mysql.connector
-
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
 
     sql1 = "SELECT Profile.Login_id,Profile.Password FROM Profile"
 

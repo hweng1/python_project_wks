@@ -1,14 +1,9 @@
 from tabulate import TableFormat, tabulate
-from werkzeug.datastructures import Headers
+import sqlite3,csv
+
 def find_user_id(Login_id):
-    import mysql.connector
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
     sql_3 = 'SELECT Profile.Login_id, Profile.User_id FROM Profile'
     my_cursor.execute(sql_3)
 
@@ -34,14 +29,8 @@ def find_user_id(Login_id):
 
 
 def profit_loss(Login_id):
-    import mysql.connector
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
     sql_4 = 'SELECT Session.Profit, Session.Loss, Session.User_id FROM Session'
     my_cursor.execute(sql_4)
 
@@ -64,14 +53,8 @@ def profit_loss(Login_id):
 # 200
 
 def time(Login_id):
-    import mysql.connector
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
     sql_5 = 'SELECT Session.Time, Session.User_id FROM Session'
     my_cursor.execute(sql_5)
     user_id = find_user_id(Login_id)
@@ -99,17 +82,10 @@ def pl_per_hr(Login_id):
 
 
 def BB_per_hr(Login_id):
-    import mysql.connector
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
     sql_6 = 'SELECT Session.Profit, Session.Loss, Session.BB, Session.User_id FROM Session'
-    my_cursor.execute(sql_5)
-
+    my_cursor.execute(sql_6)
     user_id = find_user_id(Login_id)
     Session_pl_list = my_cursor.fetchall()
     whole_list = list()
@@ -128,14 +104,8 @@ def BB_per_hr(Login_id):
     #50/12
 
 def user_table(Login_id):
-    import mysql.connector
-    mydb = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='425575404',
-        database='OIM3640_Project'
-    )
-    my_cursor = mydb.cursor()
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
     sql_7 = 'SELECT * FROM Session'
     my_cursor.execute(sql_7)
 
@@ -167,7 +137,28 @@ def user_table(Login_id):
     #     table_list.append(loop_list)
     # print(table_list)
 
-    user_table = tabulate(table,headers='firstrow',tablefmt='fancy_grid')
+    user_table = tabulate(table,headers='firstrow',tablefmt='html')
     return user_table
+# print(user_table('Michael'))
 
-print(user_table('Michael'))
+def new_session_id(Login_id):
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
+    sql_8 = 'SELECT * FROM Session'
+    my_cursor.execute(sql_8)
+    Session_list = my_cursor.fetchall()
+    whole_list = list()
+    user_id = find_user_id(Login_id)
+
+    for i in Session_list:
+        whole_list.append(i)
+    # print(whole_list)
+
+    count = 0
+    for t in whole_list:
+        if t[7] == user_id:
+            count += 1
+    new_count = count+1
+    return new_count
+# print(new_session_id('Michael'))
+# expect: 4
