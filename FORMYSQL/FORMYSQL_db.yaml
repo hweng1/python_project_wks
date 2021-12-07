@@ -1,0 +1,4 @@
+mysql_host: 'localhost'
+mysql_user: 'root'
+mysql_password: '425575404'
+mysql_db: 'OIM3640_Project'
