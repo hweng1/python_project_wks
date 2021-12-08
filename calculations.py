@@ -222,8 +222,27 @@ def graph_data(Login_id):
             datas.append(pl_sum)
     return datas
 
-print(graph_data('Michael'))
-print(graph_label('Michael'))
+def first_input(Login_id):
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
+    sql_4 = 'SELECT Session.session_id, Session.Profit, Session.Loss, Session.User_id FROM Session'
+    my_cursor.execute(sql_4)
+    whole_list = my_cursor.fetchall()
+    user_id = find_user_id(Login_id)
+    session_list = []
+    for t in whole_list:
+        if t[3] == user_id:
+            # a.replace("'","")
+            session_list.append(f'Session {t[0]}')
+    # print(len(session_list))
+    return session_list
+# print(first_input('Sunny'))
+
+
+
+
+# print(graph_data('Michael'))
+# print(graph_label('Michael'))
     # session_id_list = 
     # for t in whole_list:
     #     for i in range(t):

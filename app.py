@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from calculations import find_user_id, profit_loss, time, BB_per_hr, pl_per_hr, user_table, new_user_id, new_session_id, graph_data, graph_label
+from calculations import find_user_id, profit_loss, time, BB_per_hr, pl_per_hr, user_table, new_user_id, new_session_id, graph_data, graph_label,first_input
 import sqlite3
     
 
@@ -44,6 +44,7 @@ def registerpage():
 def index():
     if 'slogin_id' in session:
         login_id = session['slogin_id']
+
     if request.method == 'POST':
         try:
             User_id = find_user_id(login_id)
@@ -69,6 +70,8 @@ def index():
 def result():
     if 'slogin_id' in session:
         login_id = session['slogin_id']
+        if len(first_input(login_id)) == 0:
+            return redirect('/input')
         return render_template('result_output.html', p_l=profit_loss(login_id), 
             t=time(login_id), 
             pl_h=pl_per_hr(login_id), 
