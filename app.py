@@ -22,7 +22,7 @@ def checklogin():
         if len(rows) == 1:
             return redirect('/result')
         else:
-            return render_template('register_success.html')
+            return render_template('login_page.html')
     else:
         return render_template('login_page.html')
 
@@ -36,7 +36,7 @@ def registerpage():
         query2 = "INSERT INTO Profile (Login_id, Password, User_id) VALUES ('{u}','{p}','{e}')".format(u = D_login_id, p = D_password, e = D_user_id)
         my_cursor.execute(query2)
         conn.commit()
-        return redirect('/')
+        return render_template('register_success.html')
     return render_template('register.html')
 
                 
