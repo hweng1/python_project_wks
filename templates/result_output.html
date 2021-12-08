@@ -82,6 +82,7 @@
 
       {{ u_t|safe }}<br>
     <a href = "{{ url_for('index') }}">Click here to return to record a new session</a><br>
-    <a href = "{{ url_for('delete') }}">Click here to delete a previous session</a>
+    <a href = "{{ url_for('delete') }}">Click here to delete a previous session</a><br>
+    <a href="{{ url_for('checklogin') }}">Click here to log out</a>
   </body>
 </html>
