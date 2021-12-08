@@ -1,5 +1,5 @@
-from tabulate import TableFormat, tabulate
-import sqlite3,csv
+from tabulate import tabulate
+import sqlite3
 
 def find_user_id(Login_id):
     conn = sqlite3.connect('Profile.db')
@@ -76,7 +76,7 @@ def time(Login_id):
 
 def pl_per_hr(Login_id):
     pl_per_hr = profit_loss(Login_id) / time(Login_id)
-    return f'{pl_per_hr:2f}'
+    return f'{pl_per_hr:.2f}'
 # print(pl_per_hr('Michael'))
 # 200/12
 
@@ -141,26 +141,41 @@ def user_table(Login_id):
     return user_table
 # print(user_table('Michael'))
 
-def new_session_id(Login_id):
+def new_user_id():
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
+    sql_8 = 'SELECT * FROM Profile'
+    my_cursor.execute(sql_8)
+    Profile_list = my_cursor.fetchall()
+    id_list = list()
+
+    for i in Profile_list:
+        id_list.append(i)
+    print(id_list)
+
+    last_id = len(id_list)-1
+    hst_sid = int(id_list[last_id][0])
+    new_id = hst_sid+1
+    return new_id
+# print(new_user_id())
+
+def new_session_id():
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_8 = 'SELECT * FROM Session'
     my_cursor.execute(sql_8)
     Session_list = my_cursor.fetchall()
     whole_list = list()
-    user_id = find_user_id(Login_id)
 
     for i in Session_list:
         whole_list.append(i)
     # print(whole_list)
 
-    count = 0
-    for t in whole_list:
-        if t[7] == user_id:
-            count += 1
-    new_count = count+1
-    return new_count
-# print(new_session_id('Michael'))
+    last_session_t = len(whole_list)-1
+    hst_sid = int(whole_list[last_session_t][0])
+    new_session_id = hst_sid+1
+    return new_session_id
+# print(new_session_id())
 # expect: 4
 
 def graph_label(Login_id):
@@ -207,8 +222,24 @@ def graph_data(Login_id):
             datas.append(pl_sum)
     return datas
 
-print(graph_data('Michael'))
-print(graph_label('Michael'))
+
+def first_input(Login_id):
+    conn = sqlite3.connect('Profile.db')
+    my_cursor = conn.cursor()
+    sql_4 = 'SELECT Session.session_id, Session.Profit, Session.Loss, Session.User_id FROM Session'
+    my_cursor.execute(sql_4)
+    whole_list = my_cursor.fetchall()
+    user_id = find_user_id(Login_id)
+    session_list = []
+    for t in whole_list:
+        if t[3] == user_id:
+            # a.replace("'","")
+            session_list.append(f'Session {t[0]}')
+    # print(len(session_list))
+    return session_list
+
+# print(graph_data('Michael'))
+# print(graph_label('Michael'))
     # session_id_list = 
     # for t in whole_list:
     #     for i in range(t):

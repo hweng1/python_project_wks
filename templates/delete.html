@@ -3,29 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Performance Results</title>
+    <title>Session Delete</title>
   </head>
 
   <body>
     <form method="POST" name="session" action=''>
         <h1 style="text-align: center; color: blue;">Hello, you can edit the record of your past sessions on this page</h1>
         <p style="text-align: center;">
-            Please enter the session_id that you want to delete<input type='text' name='location' placeholder="e.g. 1"><br>
+            Please enter the session_id that you want to delete<input type='text' name='dl_id' placeholder="e.g. 1"><br>
         </p >
         <p style="text-align: center;">
             <input type='submit'>
         </p >
     </form>
-    <h1 style="text-align: center;">Results</h1>
-    <p style="text-align: center;">win/loss<br><br>
-      <em><b>{{ profit_loss }}</em></b> </p >
-    <p style="text-align: center;">total time<br><br>
-        <em><b>{{ time }}</em></b> </p >
-    <p style="text-align: center;">profit/loss per hour<br><br>
-        <em><b>{{ pl_per_hr }}</em></b> </p >
-    <p style="text-align: center;">big blind per hour<br><br>
-        <em><b>{{ BB_per_hr }}</em></b> </p >
-    <p style="text-align: center;">big blind per hour<br><br>
-        <em><b>{{ user_table }}</em></b> </p >
+    <a href="{{ url_for('result') }}">Click here to return</a><br>
   </body>
 </html>
