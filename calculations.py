@@ -222,8 +222,8 @@ def graph_data(Login_id):
             datas.append(pl_sum)
     return datas
 
-print(graph_data('Michael'))
-print(graph_label('Michael'))
+# print(graph_data('Michael'))
+# print(graph_label('Michael'))
     # session_id_list = 
     # for t in whole_list:
     #     for i in range(t):
