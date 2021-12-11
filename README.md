@@ -1,6 +1,8 @@
 # python_project_wks
  repository for python team (Corinna, Michael, Wendi) project: Texas Hold'em Recorder Web Application 
  
+We created this website to help poker players to document their gambling records and evaluate their own performance. For example, Michael can enter his winning and losing amount, numebr of big blinds won, and his total time played into the website and be able to easily visualize his record. There are currently apps on the market that help poker players record their history; however, these apps all have a freemium model. Once an user enters a certain amount of data, the app starts charging a fee. We want to create a free website for users to document their poker record and get better at playing poker. 
+
  First, the user will see a website page that asks him to log in to his account; he needs to put in his login ID and a password. If the user has previously created an ID on the website, then he will be able to log in. If the user has not previously created an ID on the website, then he will click the "register" button. Then the website will take him to a page and ask him to create an ID and a password. 
 
  After the user enters his page, he will see the results of his poker games. There will be a summary table that demonstrates his past records, including "win/loss", "total time played", "profit/loss per hour", and "big blind per hour." There will also be two bar chart graphs demonstrating the profit and loss of the player. 
@@ -15,3 +17,17 @@
  3. Build more data analytical function. 
  4. Allow the user to delete his account. 
  5. Conbine the functions of delete page and the result page
+
+ Attribution:
+https://www.youtube.com/watch?v=E2hytuQvLlE
+https://www.youtube.com/watch?v=taEVTka9UcA
+https://www.youtube.com/watch?v=cyl0Oj3rmmg
+https://www.youtube.com/watch?v=SqNka6U7mcs
+https://www.youtube.com/watch?v=AvjdML5_ASs
+https://www.chartjs.org/docs/latest/samples/bar/vertical.html
+https://www.youtube.com/watch?v=hbDRTZarMUw
+https://www.youtube.com/watch?v=tPxUSWTvZAs
+https://www.chartjs.org/docs/latest/axes/
+https://www.codegrepper.com/code-examples/javascript/chart+js+set+y+axis+range
+
+
