@@ -222,6 +222,7 @@ def graph_data(Login_id):
             datas.append(pl_sum)
     return datas
 
+
 def first_input(Login_id):
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
@@ -236,10 +237,6 @@ def first_input(Login_id):
             session_list.append(f'Session {t[0]}')
     # print(len(session_list))
     return session_list
-# print(first_input('Sunny'))
-
-
-
 
 # print(graph_data('Michael'))
 # print(graph_label('Michael'))

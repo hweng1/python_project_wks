@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from calculations import find_user_id, profit_loss, time, BB_per_hr, pl_per_hr, user_table, new_user_id, new_session_id, graph_data, graph_label,first_input
+from calculations import find_user_id, profit_loss, time, BB_per_hr, pl_per_hr, user_table, new_user_id, new_session_id, graph_data, graph_label, first_input
 import sqlite3
     
 
@@ -44,7 +44,6 @@ def registerpage():
 def index():
     if 'slogin_id' in session:
         login_id = session['slogin_id']
-
     if request.method == 'POST':
         try:
             User_id = find_user_id(login_id)
