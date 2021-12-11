@@ -2,6 +2,7 @@ from tabulate import tabulate
 import sqlite3
 
 def find_user_id(Login_id):
+    '''find the user_id in the database according to the user inputs'''
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_3 = 'SELECT Profile.Login_id, Profile.User_id FROM Profile'
@@ -29,6 +30,7 @@ def find_user_id(Login_id):
 
 
 def profit_loss(Login_id):
+    """find the total amount won/lost based on all sessions inputed by a user"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_4 = 'SELECT Session.Profit, Session.Loss, Session.User_id FROM Session'
@@ -53,6 +55,7 @@ def profit_loss(Login_id):
 # 200
 
 def time(Login_id):
+    """calculate the total time of each user spends playing poker"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_5 = 'SELECT Session.Time, Session.User_id FROM Session'
@@ -75,6 +78,7 @@ def time(Login_id):
 # 12
 
 def pl_per_hr(Login_id):
+    """calculate overall profit loss per hour"""
     pl_per_hr = profit_loss(Login_id) / time(Login_id)
     return f'{pl_per_hr:.2f}'
 # print(pl_per_hr('Michael'))
@@ -82,6 +86,7 @@ def pl_per_hr(Login_id):
 
 
 def BB_per_hr(Login_id):
+    """calculate the number of big blind a player can win per hour"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_6 = 'SELECT Session.Profit, Session.Loss, Session.BB, Session.User_id FROM Session'
@@ -104,6 +109,7 @@ def BB_per_hr(Login_id):
     #50/12
 
 def user_table(Login_id):
+    """show all session input by an user on the result page. the outcome is a html formatted string."""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_7 = 'SELECT * FROM Session'
@@ -142,6 +148,7 @@ def user_table(Login_id):
 # print(user_table('Michael'))
 
 def new_user_id():
+    """calculate the new user id for newly registered users"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_8 = 'SELECT * FROM Profile'
@@ -160,6 +167,7 @@ def new_user_id():
 # print(new_user_id())
 
 def new_session_id():
+    """calculate new session ID for newly input session information"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_8 = 'SELECT * FROM Session'
@@ -179,6 +187,7 @@ def new_session_id():
 # expect: 4
 
 def graph_label(Login_id):
+    """form a new list for labels on the x-axis for the outcome table"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_4 = 'SELECT Session.session_id, Session.Profit, Session.Loss, Session.User_id FROM Session'
@@ -201,6 +210,7 @@ def graph_label(Login_id):
     return labels
 
 def graph_data(Login_id):
+    """show session win or lose situation on the y axis"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_4 = 'SELECT Session.session_id, Session.Profit, Session.Loss, Session.User_id FROM Session'
@@ -224,6 +234,7 @@ def graph_data(Login_id):
 
 
 def first_input(Login_id):
+    """check whether the login input has any sessions under the login user id"""
     conn = sqlite3.connect('Profile.db')
     my_cursor = conn.cursor()
     sql_4 = 'SELECT Session.session_id, Session.Profit, Session.Loss, Session.User_id FROM Session'

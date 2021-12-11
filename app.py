@@ -12,6 +12,7 @@ my_cursor = conn.cursor()
 
 @app.route('/', methods=['GET','POST'])
 def checklogin():
+    """show log in page. checks if the login credentials are in the profile table in the database."""
     if request.method == 'POST':
         login_id = (request.form['login_id'])
         session["slogin_id"] = login_id
@@ -29,6 +30,7 @@ def checklogin():
 
 @app.route('/register', methods = ['GET', 'POST'])
 def registerpage():
+    """create a register page that requires user to put in login ID, password. The user ID is aito generated and put into the database. After user creates a login ID, password, and user ID, show a page for register success."""
     if request.method == 'POST':
         D_login_id = request.form['D_login_id']
         D_password = request.form['D_password']
@@ -42,6 +44,7 @@ def registerpage():
                 
 @app.route('/input',methods=['GET','POST'])
 def index():
+    """create an index page that allows users to document their session details, location, hours, win, loss, small_blind, big_blind, session_id. After users put in the data, show users that they have successfully entered the data. """
     if 'slogin_id' in session:
         login_id = session['slogin_id']
     if request.method == 'POST':
@@ -67,6 +70,7 @@ def index():
 
 @app.route('/result')
 def result():
+    """create a login page that checks there are any sessions under a user. if the user does not have any sessions, redirect the user to the input page."""
     if 'slogin_id' in session:
         login_id = session['slogin_id']
         if len(first_input(login_id)) == 0:
@@ -82,6 +86,7 @@ def result():
 
 @app.route('/delete', methods=['GET','POST'])
 def delete():
+    """When an user clicks the submit button, the session with corresponding session_id (user input) will be deleted from the database."""
     if request.method == 'POST':
         try:
             dl_id = (request.form['dl_id'])
